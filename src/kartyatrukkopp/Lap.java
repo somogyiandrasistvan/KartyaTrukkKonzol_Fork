@@ -8,7 +8,7 @@ public class Lap {
     }
 
     public String getLeiras() {
-        return leiras;
+        return this.leiras;
     }
     
     

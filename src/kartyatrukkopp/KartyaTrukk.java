@@ -5,14 +5,20 @@ import java.util.Scanner;
 public class KartyaTrukk {
 
     private static final Scanner sc = new Scanner(System.in);
+    private Pakli pakli;
 
     public KartyaTrukk() {
-        indit();
+        int oszlop = 0;
+        this.pakli = new Pakli();
+        for (int i = 0; i < 3; i++) {
+            this.pakli.kirak();
+            melyik(oszlop);
+        }
+        this.pakli.ezVolt();
     }
 
-    private void indit() {
-        int oszlop = 0;
-        melyik(oszlop);
+    public static void main(String[] args) {
+        new KartyaTrukk();
     }
 
     private void melyik(int oszlop) {
@@ -22,7 +28,6 @@ public class KartyaTrukk {
             oszlop = sc.nextInt();
             jo = oszlop >= 1 && oszlop <= 3;
         } while (!jo);
-        Pakli e = new Pakli();
-        e.kever(oszlop);
+        this.pakli.kever(oszlop);
     }
 }
