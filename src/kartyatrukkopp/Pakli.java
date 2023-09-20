@@ -2,25 +2,26 @@ package kartyatrukkopp;
 
 public class Pakli {
 
-    private static String[] pakli = new String[22];
-    String[] szinek = {"P", "T", "Z", "M"};
-    String[] ertekek = {"Ász", "Kir", "Fel", "X", "IX", "VIII"};
+    private static Lap[] pakli = new Lap[22];
 
     public Pakli() {
+        feltolt();
     }
 
     private void feltolt() {
+        String[] szinek = {"P", "T", "Z", "M"};
+        String[] ertekek = {"Ász", "Kir", "Fel", "X", "IX", "VIII"};
         int i = 1;
         for (String szin : szinek) {
             for (int e = 0; e < ertekek.length && i < pakli.length; e++) {
-                pakli[i++] = szin + "_" + ertekek[e];
+                pakli[i++] = new Lap(szin + "_" + ertekek[e]);
             }
         }
     }
 
-    private void kirak() {
+    void kirak() {
         for (int i = 1; i < pakli.length; i++) {
-            System.out.printf("%-8s", pakli[i]);
+            System.out.printf("%-8s", pakli[i].getLeiras());
             if (i % 3 == 0) {
                 System.out.println("");
             }
@@ -28,7 +29,7 @@ public class Pakli {
     }
 
     void kever(int oszlop) {
-        String[] ujPakli = new String[22];
+        Lap[] ujPakli = new Lap[22];
         switch (oszlop) {
             case 1:
                 for (int i = 1; i <= 7; i++) {
@@ -55,7 +56,7 @@ public class Pakli {
         pakli = ujPakli;
     }
 
-    private void ezVolt() {
-        System.out.println("A választott lap: " + pakli[11]);
+    void ezVolt() {
+        System.out.println("A választott lap: " + pakli[11].getLeiras());
     }
 }
